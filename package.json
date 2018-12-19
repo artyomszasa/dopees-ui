@@ -1,8 +1,9 @@
 {
-  "name": "dopees-ui-form",
+  "name": "dopees-ui",
   "version": "0.0.1",
-  "description": "dopees-ui-form",
-  "main": "index.js",
+  "description": "dopees-ui",
+  "main": "lib/dom.js",
+  "types": "lib/dom.d.ts",
   "_scripts": {
     "test": "TS_NODE_PROJECT=tsconfig.test.json mocha -r ts-node/register tests/**/*.test.ts",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
