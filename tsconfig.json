@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom", "esnext.asynciterable"],
+    "target": "esnext",
+    "module": "esnext",
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true,
+    "inlineSourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+        "@polymer/*": [ "node_modules/@polymer/*" ]
+    },
+    "experimentalDecorators": true,
+    "noImplicitAny": false
+  },
+  "include": ["src"],
+  "exclude": ["**/__tests__/*"]
+}

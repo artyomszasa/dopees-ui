@@ -1,0 +1,35 @@
+{
+  "name": "dopees-ui-form",
+  "version": "0.0.1",
+  "description": "dopees-ui-form",
+  "main": "index.js",
+  "_scripts": {
+    "test": "TS_NODE_PROJECT=tsconfig.test.json mocha -r ts-node/register tests/**/*.test.ts",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+  },
+  "author": "",
+  "license": "MIT",
+  "flat": true,
+  "dependencies": {
+    "@polymer/polymer": "3.1.0",
+    "@polymer/decorators": "3.0.0",
+    "dopees-core": "artyomszasa/dopees-core"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.6",
+    "@types/chai": "4.1.7",
+    "@types/node": "10.12.11",
+    "@types/mocha": "^5.2.5",
+    "dependency-pipelines": "0.0.18",
+    "node-sass": "4.10.0",
+    "mkdirp": "0.5.1",
+    "pug": "2.0.3",
+    "chai": "4.2.0",
+    "mocha": "5.2.0",
+    "nyc": "13.1.0",
+    "ts-node": "7.0.1",
+    "typescript": "3.1.6",
+    "dopees-chain": "file://../dopees-chain",
+    "dopees-chain-polymer": "file://../dopees-chain-polymer"
+  }
+}

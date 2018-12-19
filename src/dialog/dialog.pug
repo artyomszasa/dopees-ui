@@ -1,0 +1,9 @@
+link(rel='stylesheet' href='dialog.css')
+.wrapper
+    .dialog
+        template(is='dom-if' if='[[title]]')
+            .title [[title]]
+        .body
+            slot(name='body')
+        .buttons
+            slot(name='buttons')
