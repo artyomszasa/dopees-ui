@@ -16,6 +16,9 @@ export interface DopeRouter {
     _resolveComponentPath(component: string): string;
     _loadComponent(component: string): Promise<any>;
 }
+export declare namespace DopeRouter {
+    function attachLinkHandlers(root: Node): void;
+}
 export interface Ctor<T> {
     new (...args: any[]): T;
 }

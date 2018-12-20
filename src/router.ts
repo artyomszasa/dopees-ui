@@ -33,7 +33,7 @@ export interface DopeRouter {
   _loadComponent (component: string): Promise<any>;
 }
 
-namespace DopeRouter {
+export namespace DopeRouter {
   export function attachLinkHandlers(root: Node) {
     root.addEventListener('click', (ex: Event) => {
       const e = <MouseEvent>ex;
