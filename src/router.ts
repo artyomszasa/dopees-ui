@@ -22,7 +22,7 @@ export interface StringMap {
   [key: string]: string;
 }
 
-interface DopeRouter {
+export interface DopeRouter {
   notFound: boolean;
   currentPage: PageData;
   defaultComponent: string;
@@ -74,7 +74,7 @@ namespace DopeRouter {
   }
 }
 
-interface Ctor<T> {
+export interface Ctor<T> {
   new (...args: any[]): T;
 }
 
