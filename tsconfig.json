@@ -9,7 +9,8 @@
     "inlineSourceMap": true,
     "baseUrl": ".",
     "paths": {
-        "@polymer/*": [ "node_modules/@polymer/*" ]
+        "@polymer/*": [ "node_modules/@polymer/*" ],
+        "dopees-core/*": [ "node_modules/dopees-core/*" ]
     },
     "experimentalDecorators": true,
     "noImplicitAny": false

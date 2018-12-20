@@ -1,0 +1,4 @@
+link(rel='stylesheet' href='dope-log.css' inline)
+template(is='dom-repeat' items='[[messages]]')
+    div(class$='dope-log [[_className(item.severity)]]')
+        .dope-log__text [[item.message]]
