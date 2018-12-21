@@ -23,10 +23,4 @@ export interface Ctor<T> {
     new (...args: any[]): T;
 }
 export declare const DopeRouterMixin: <T extends PolymerElement>(base: Ctor<T>) => Ctor<T & DopeRouter>;
-export declare const DopeGotoMixin: (base: any) => {
-    new (): {
-        [x: string]: any;
-        ready(): void;
-    };
-    [x: string]: any;
-};
+export declare const DopeGotoMixin: <T extends PolymerElement>(base: Ctor<T>) => Ctor<T>;

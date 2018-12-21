@@ -176,9 +176,11 @@ export const DopeRouterMixin = dedupingMixin(<T extends PolymerElement>(base: Ct
   return <Ctor<T & DopeRouter>><unknown>DopeRouted;
 });
 
-export const DopeGotoMixin = dedupingMixin(base => class extends base {
+export const DopeGotoMixin = dedupingMixin(<T extends PolymerElement>(base: Ctor<T>) => <Ctor<T>>class extends (<Ctor<PolymerElement>>base) {
   ready () {
       super.ready();
-      DopeRouter.attachLinkHandlers(this.shadowRoot);
+      if (this.shadowRoot) {
+        DopeRouter.attachLinkHandlers(this.shadowRoot);
+      }
   }
 });
