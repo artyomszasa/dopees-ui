@@ -55,6 +55,7 @@ export class DopeMaterialIcon extends HTMLElement {
   }
 
   connectedCallback() {
+    this.style.display = 'none';
     this.updateSvg();
   }
 
