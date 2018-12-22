@@ -37,6 +37,10 @@ export class DopeMaterialIcon extends HTMLElement {
           }
           icon.innerHTML = svg.contents;
           icon[keyIconType] = this.iconType;
+          const slot = this.getAttribute('slot');
+          if (slot) {
+            icon.setAttribute('slot', slot);
+          }
           this.icon = this.parentNode.insertBefore(icon, this);
         }
       }
