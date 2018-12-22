@@ -10,9 +10,6 @@ const icons: Icons = ics;
 const keyIconType = Symbol('iconType');
 
 export class DopeMaterialIcon extends HTMLElement {
-  static removeEvent = 'icon-remove';
-  static connectEvent = 'icon-connect';
-  static clickEvent = 'icon-click';
   static get observedAttributes() { return [ 'type' ] }
 
   private iconType?: string;
@@ -23,10 +20,6 @@ export class DopeMaterialIcon extends HTMLElement {
     if (this.icon) {
       dom.remove(this.icon);
       this.icon = undefined;
-      this.dispatchEvent(new CustomEvent(DopeMaterialIcon.removeEvent, {
-        bubbles: false,
-        cancelable: false
-      }));
     }
   }
 
@@ -50,30 +43,7 @@ export class DopeMaterialIcon extends HTMLElement {
           }
           icon.innerHTML = svg.contents;
           icon[keyIconType] = this.iconType;
-          const slot = this.getAttribute('slot');
-          if (slot) {
-            icon.setAttribute('slot', slot);
-          }
-          this.icon = this.parentNode.insertBefore(icon, this);
-          this.icon.addEventListener('click', e => {
-            const ex = new CustomEvent<MouseEvent>(DopeMaterialIcon.clickEvent, {
-              bubbles: true,
-              cancelable: true,
-              detail: e
-            });
-            this.dispatchEvent(ex);
-            if (ex.cancelBubble) {
-              e.stopPropagation();
-            }
-            if (ex.defaultPrevented) {
-              e.preventDefault();
-            }
-          }, false);
-          this.dispatchEvent(new CustomEvent(DopeMaterialIcon.connectEvent, {
-            bubbles: false,
-            cancelable: false,
-            detail: icon
-          }));
+          this.icon = this.appendChild(icon);
         }
       }
     }
@@ -87,7 +57,6 @@ export class DopeMaterialIcon extends HTMLElement {
   }
 
   connectedCallback() {
-    this.style.display = 'none';
     this.updateSvg();
   }
 

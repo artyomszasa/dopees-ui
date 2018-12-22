@@ -1,7 +1,4 @@
 export declare class DopeMaterialIcon extends HTMLElement {
-    static removeEvent: string;
-    static connectEvent: string;
-    static clickEvent: string;
     static readonly observedAttributes: string[];
     private iconType?;
     icon?: SVGSVGElement;
