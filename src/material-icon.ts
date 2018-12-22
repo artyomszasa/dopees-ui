@@ -10,16 +10,29 @@ const icons: Icons = ics;
 const keyIconType = Symbol('iconType');
 
 export class DopeMaterialIcon extends HTMLElement {
+  static removeEvent = 'icon-remove';
+  static connectEvent = 'icon-connect';
+  static clickEvent = 'icon-click';
   static get observedAttributes() { return [ 'type' ] }
 
   private iconType?: string;
 
   icon?: SVGSVGElement;
 
+  private removeSvg() {
+    if (this.icon) {
+      dom.remove(this.icon);
+      this.icon = undefined;
+      this.dispatchEvent(new CustomEvent(DopeMaterialIcon.removeEvent, {
+        bubbles: false,
+        cancelable: false
+      }));
+    }
+  }
+
   private updateSvg() {
     if (!this.iconType) {
-      this.icon && dom.remove(this.icon);
-      this.icon = undefined;
+      this.removeSvg();
     } else {
       if (this.icon) {
         if (this.icon[keyIconType] === this.iconType) {
@@ -42,6 +55,25 @@ export class DopeMaterialIcon extends HTMLElement {
             icon.setAttribute('slot', slot);
           }
           this.icon = this.parentNode.insertBefore(icon, this);
+          this.icon.addEventListener('click', e => {
+            const ex = new CustomEvent<MouseEvent>(DopeMaterialIcon.clickEvent, {
+              bubbles: true,
+              cancelable: true,
+              detail: e
+            });
+            this.dispatchEvent(ex);
+            if (ex.cancelBubble) {
+              e.stopPropagation();
+            }
+            if (ex.defaultPrevented) {
+              e.preventDefault();
+            }
+          }, false);
+          this.dispatchEvent(new CustomEvent(DopeMaterialIcon.connectEvent, {
+            bubbles: false,
+            cancelable: false,
+            detail: icon
+          }));
         }
       }
     }
@@ -60,8 +92,7 @@ export class DopeMaterialIcon extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.icon && dom.remove(this.icon);
-    this.icon = undefined;
+    this.removeSvg();
   }
 };
 
