@@ -1,8 +1,8 @@
 link(rel='stylesheet' href='dialog.css')
 .wrapper
     .dialog
-        template(is='dom-if' if='[[title]]')
-            .title [[title]]
+        template(is='dom-if' if='[[caption]]')
+            .title [[caption]]
         .body
             slot(name='body')
         .buttons

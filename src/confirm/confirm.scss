@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  position: fixed;
+  z-index: 9999;
+}
+
+dope-dialog {
+  --dialog-width: 20rem;
+}
+
+p {
+  margin: 0;
+}

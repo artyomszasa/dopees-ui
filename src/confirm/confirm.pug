@@ -1,0 +1,6 @@
+link(rel='stylesheet' href='confirm.css')
+dope-dialog(caption='[[caption]]')
+    p(slot='body') [[message]]
+    .buttons(slot='buttons')
+        dope-button(label='[[cancelButtonLabel]]' on-click='onCancelClick')
+        dope-button(label='[[confirmButtonLabel]]' on-click='onOkClick')
