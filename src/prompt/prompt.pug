@@ -1,0 +1,5 @@
+link(rel='stylesheet' href='prompt.css' inline)
+dope-dialog(caption='[[caption]]')
+  p(slot='body'): dope-text-box(value='{{value}}' label='[[label]]' hint='[[hint]]')
+  .buttons(slot='buttons')
+    dope-button(label='Ok' on-click='onOk')
