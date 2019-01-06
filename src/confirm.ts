@@ -49,7 +49,7 @@ export class DopeConfirm extends PolymerElement {
         dialog.remove();
         resolve();
       }, false);
-      dialog.addEventListener('dope-ok', () => {
+      dialog.addEventListener('dope-cancel', () => {
         dialog.remove();
         reject('cancelled');
       }, false)

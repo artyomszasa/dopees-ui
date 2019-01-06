@@ -120,33 +120,45 @@ export const DopeRouterMixin = dedupingMixin(<T extends PolymerElement>(base: Ct
         }
         this.initPage(initialPage, false, true);
     }
-    initPage (page: PageData, isPop?: boolean, replace?: boolean) {
-        if (!page) {
-            throw new Error('page not specified in initPage.');
+    async initPage (page: PageData, isPop?: boolean, replace?: boolean) {
+      if (!page) {
+        throw new Error('page not specified in initPage.');
+      }
+      let confirmLeave = true;
+      if (this.__previousPage && this.__previousPage.beforeLeave) {
+        try {
+          confirmLeave = await Promise.resolve<boolean>(this.__previousPage.beforeLeave());
+        } catch (e) {
+          console.warn(e);
+          confirmLeave = false;
         }
-        let confirmLeave = Promise.resolve();
-        if (this.__previousPage && this.__previousPage.beforeLeave) {
-            confirmLeave = Promise.resolve(this.__previousPage.beforeLeave()); // dope.confirm('Az aktuális oldal tartalmaz nem mentett változást...', 'Biztosan vált oldalt?');
+      }
+      if (confirmLeave) {
+        let loaded: boolean;
+        try {
+          await this._loadComponent(page.component);
+          loaded = true;
+        } catch (e) {
+          console.warn(e);
+          loaded = false;
         }
-        confirmLeave.then(() => {
-            return this._loadComponent(page.component)
-                .then(null, () => this.notFound = true)
-                .then(() => {
-                    this.notFound = false;
-                    if (!isPop) {
-                        const uri = new Uri('');
-                        uri.path = '/' + page.component.replace('-', '/');
-                        uri.queryParams = page.arguments || {};
-                        if (replace) {
-                            window.history.replaceState(page, '', uri.href);
-                        } else {
-                            window.history.pushState(page, '', uri.href);
-                        }
-                    }
-                    this.currentPage = page;
-                });
-        }, () => {});
-
+        if (!loaded) {
+          this.notFound = true;
+        } else {
+          this.notFound = false;
+          if (!isPop) {
+            const uri = new Uri('');
+            uri.path = '/' + page.component.replace('-', '/');
+            uri.queryParams = page.arguments || {};
+            if (replace) {
+                window.history.replaceState(page, '', uri.href);
+            } else {
+                window.history.pushState(page, '', uri.href);
+            }
+          }
+          this.currentPage = page;
+        }
+      }
     }
     _currentPageChanged (page: PageData) {
       if (!this.notFound) {

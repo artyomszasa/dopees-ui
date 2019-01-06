@@ -1747,6 +1747,10 @@ declare const icons: {
         "viewBox": string;
         "contents": string;
     };
+    "link off": {
+        "viewBox": string;
+        "contents": string;
+    };
     "content paste": {
         "viewBox": string;
         "contents": string;
