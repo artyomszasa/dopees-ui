@@ -104,18 +104,22 @@ export const DopeRouterMixin = dedupingMixin(<T extends PolymerElement>(base: Ct
         // kezdei állapot kilvasása url-ből
         const uri = Uri.from(window.location.href);
         const initialPage = {
-            component: (uri.path.substring(1).replace('/', '-') || this.defaultComponent),
-            arguments: (uri.path.substring(1).replace('/', '-') ? uri.queryParams : this.defaultArguments)
+          component: (uri.path.substring(1).replace('/', '-') || this.defaultComponent),
+          arguments: (uri.path.substring(1).replace('/', '-') ? uri.queryParams : this.defaultArguments)
         };
         // külső layout-ban lévő linkek lekezelése.
         if (this.shadowRoot) {
           DopeRouter.attachLinkHandlers(this.shadowRoot);
           // oldalváltás lekezelése.
           this.shadowRoot.addEventListener('goto-page', ex => {
-            const e = <CustomEvent<PageDataArgs>>ex;
+            const e = <CustomEvent<PageDataArgs|null>>ex;
             e.preventDefault();
             e.stopPropagation();
-            this.initPage(e.detail.page, false, !!e.detail.replace);
+            if (!e.detail) {
+              this.initPage({ component: this.defaultComponent, arguments: this.defaultArguments }, false, false);
+            } else {
+              this.initPage(e.detail.page, false, !!e.detail.replace);
+            }
           }, true);
         }
         this.initPage(initialPage, false, true);
