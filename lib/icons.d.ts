@@ -3,6 +3,10 @@ export interface IconDescriptor {
     contents: string;
 }
 declare const icons: {
+    "category": {
+        "viewBox": string;
+        "contents": string;
+    };
     "line weight": {
         "viewBox": string;
         "contents": string;
