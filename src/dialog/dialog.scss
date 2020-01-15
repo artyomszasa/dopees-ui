@@ -55,9 +55,9 @@
 
 @media only screen and (max-height: 660px) {
   .dialog {
-      top: 5rem;
+    top: 1rem;
   }
   .body {
-      max-height: calc(100vh - 21rem);
+    max-height: calc(100vh - 9rem);
   }
 }
