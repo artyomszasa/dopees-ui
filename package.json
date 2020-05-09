@@ -17,7 +17,7 @@
   "dependencies": {
     "@polymer/polymer": "3.1.0",
     "@polymer/decorators": "3.0.0",
-    "dopees-core": "artyomszasa/dopees-core"
+    "dopees-core": "artyomszasa/dopees-core#master"
   },
   "devDependencies": {
     "@babel/core": "7.1.6",
@@ -34,10 +34,10 @@
     "nyc": "13.1.0",
     "ts-node": "7.0.1",
     "typescript": "3.1.6",
-    "dopees-chain": "artyomszasa/dopees-chain",
-    "dopees-chain-sass": "artyomszasa/dopees-chain-sass",
-    "dopees-chain-pug": "artyomszasa/dopees-chain-pug",
-    "dopees-chain-typescript": "artyomszasa/dopees-chain-typescript",
-    "dopees-chain-polymer": "artyomszasa/dopees-chain-polymer"
+    "dopees-chain": "artyomszasa/dopees-chain#master",
+    "dopees-chain-sass": "artyomszasa/dopees-chain-sass#master",
+    "dopees-chain-pug": "artyomszasa/dopees-chain-pug#master",
+    "dopees-chain-typescript": "artyomszasa/dopees-chain-typescript#master",
+    "dopees-chain-polymer": "artyomszasa/dopees-chain-polymer#master"
   }
 }
