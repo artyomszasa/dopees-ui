@@ -4,7 +4,7 @@ import { PolymerElement } from '@polymer/polymer/polymer-element';
  * Implments asynchronous alert message.
  */
 export declare class DopeAlert extends PolymerElement {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     /**
      * Shows alert message, returns promise that is resolved once user has clicked the "OK" button.
      *

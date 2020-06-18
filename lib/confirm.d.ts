@@ -9,7 +9,7 @@ export interface DopeConfirmInit {
  * Implments asynchronous confirmation dialog.
  */
 export declare class DopeConfirm extends PolymerElement {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     /**
      * Shows confirmation dialog, returns promise that is resolved if user has clicked the confirm button, or rejected if
      * user has clicked the cancel button.

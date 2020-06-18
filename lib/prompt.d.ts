@@ -6,7 +6,7 @@ export interface DopePromptInit {
     value?: string;
 }
 export declare class DopePrompt extends PolymerElement {
-    static readonly template: HTMLTemplateElement;
+    static get template(): HTMLTemplateElement;
     static show(label: string, caption?: string, hint?: string, value?: string): Promise<string>;
     static show(init: DopePromptInit): Promise<string>;
     caption: string;

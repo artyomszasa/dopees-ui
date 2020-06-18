@@ -1,5 +1,5 @@
 export declare class DopeMaterialIcon extends HTMLElement {
-    static readonly observedAttributes: string[];
+    static get observedAttributes(): string[];
     private iconType?;
     icon?: SVGSVGElement;
     private removeSvg;
