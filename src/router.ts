@@ -162,6 +162,12 @@ export const DopeRouterMixin = dedupingMixin(<T extends PolymerElement>(base: Ct
           }
           this.currentPage = page;
         }
+      } else {
+        // restore state somehow o_O
+        const uri = new Uri('');
+        uri.path = '/' + this.currentPage.component.replace('-', '/');
+        uri.queryParams = this.currentPage.arguments || {};
+        window.history.pushState(this.currentPage, '', uri.href);
       }
     }
     _currentPageChanged (page: PageData) {

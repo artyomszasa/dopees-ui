@@ -1,6 +1,6 @@
 {
   "name": "dopees-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "dopees-ui",
   "main": "lib/dom.js",
   "types": "lib/dom.d.ts",
